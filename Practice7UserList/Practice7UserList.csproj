@@ -80,7 +80,7 @@
     <Compile Include="Tools\ILoaderOwner.cs" />
     <Compile Include="Tools\Interfaces\IChinaHoroscope.cs" />
     <Compile Include="Tools\Managers\LoaderMeneger.cs" />
-    <Compile Include="Tools\Managers\NavigationMeneger.cs" />
+    <Compile Include="Tools\Managers\NavigationManager.cs" />
     <Compile Include="Tools\Managers\SerializationManager.cs" />
     <Compile Include="Tools\Managers\StationManager.cs" />
     <Compile Include="Tools\Navigation\BaseNavigationModel.cs" />
@@ -94,14 +94,10 @@
     <Compile Include="Views\CreateUserView.xaml.cs">
       <DependentUpon>CreateUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\CreateUserViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\UpdateView.xaml.cs">
-      <DependentUpon>UpdateView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserListView.xaml.cs">
       <DependentUpon>UserListView.xaml</DependentUpon>
@@ -127,10 +123,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\UpdateView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

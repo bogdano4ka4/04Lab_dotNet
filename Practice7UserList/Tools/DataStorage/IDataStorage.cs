@@ -10,6 +10,7 @@ namespace Practice7UserList.Tools.DataStorage
     {
         void AddUser(Person user);
         void DeleteUser(Person user);
+
         List<Person> UsersList { get; }
     }
 }

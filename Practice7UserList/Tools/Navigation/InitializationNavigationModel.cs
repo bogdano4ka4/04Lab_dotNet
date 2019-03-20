@@ -18,9 +18,6 @@ namespace Practice7UserList.Tools.Navigation
                 case ViewType.AddUser:
                     ViewsDictionary.Add(viewType, new SignUpView());
                     break;
-                case ViewType.UpdatePerson:
-                    ViewsDictionary.Add(viewType, new UpdateView());
-                    break;
                 case ViewType.Main:
                     ViewsDictionary.Add(viewType, new MainView());
                     break;

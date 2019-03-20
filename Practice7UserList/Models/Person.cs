@@ -16,7 +16,14 @@ namespace Practice7UserList
         private string _surname;
         private string _email;
         private DateTime? _birth;
+
+        private readonly bool _isBirthday;
+        private readonly string _westHor;
+        private readonly string _chiHor;
+        private readonly bool _isAdult;
         #endregion
+
+
 
         #region Properties
         public string Name
@@ -45,7 +52,7 @@ namespace Practice7UserList
             {
                 if (!new EmailAddressAttribute().IsValid(value))
                 {
-                    MessageBox.Show("not valid email");
+                   throw new IllegalEmailException(value);
                     return;
                 }
                 _email = value;
@@ -73,22 +80,22 @@ namespace Practice7UserList
         }
         public bool IsBirthday
         {
-            get => CheckBirthday();
+            get => _isBirthday;
         }
 
         public string SunSign
         {
-            get => WestHor();
+            get => _westHor;
         }
 
         public string ChineseSign
         {
-            get => GiveChinaHoroscope(Birth);
+            get => _chiHor;
         }
 
         public bool IsAdult
         {
-            get => CalculateAge() >= 18;
+            get => _isAdult;
         }
         #endregion
 
@@ -100,13 +107,21 @@ namespace Practice7UserList
             _surname = surname;
             _email = email;
             _birth = birth;
+            _isBirthday = CheckBirthday();
+            _westHor = WestHor();
+            _chiHor= GiveChinaHoroscope(Birth);
+            _isAdult = CalculateAge() >= 18;
         }
         public Person(string name, string surname, string email)
         {
-           
             _name = name;
             _surname = surname;
             _email = email;
+            if(Birth!=null)
+            _isBirthday = CheckBirthday();
+            _westHor = WestHor();
+            _chiHor = GiveChinaHoroscope(Birth);
+            _isAdult = CalculateAge() >= 18;
         }
         public Person(string name, string surname, DateTime birth)
         {
@@ -115,6 +130,10 @@ namespace Practice7UserList
             _surname = surname;
             _birth = birth;
             _email = null;
+            _isBirthday = CheckBirthday();
+            _westHor = WestHor();
+            _chiHor = GiveChinaHoroscope(Birth);
+            _isAdult = CalculateAge() >= 18;
         }
         #endregion
         #region Methods

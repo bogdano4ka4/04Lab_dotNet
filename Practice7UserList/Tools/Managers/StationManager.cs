@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Practice7UserList.Tools.DataStorage;
 
@@ -10,6 +6,7 @@ namespace Practice7UserList.Tools.Managers
 {
     internal static class StationManager
     {
+        public static event Action StopThreads;
         private static IDataStorage _dataStorage;
 
         internal static Person CurrentUser { get; set; }
@@ -27,6 +24,7 @@ namespace Practice7UserList.Tools.Managers
         internal static void CloseApp()
         {
             MessageBox.Show("ShutDown");
+            StopThreads?.Invoke();
             Environment.Exit(1);
         }
     }

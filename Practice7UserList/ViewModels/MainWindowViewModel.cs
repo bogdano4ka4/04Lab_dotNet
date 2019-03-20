@@ -35,6 +35,7 @@ namespace Practice7UserList.ViewModels
         internal MainWindowViewModel()
         {
             LoaderManager.Instance.Initialize(this);
+
         }
     }
 }

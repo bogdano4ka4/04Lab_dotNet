@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,8 @@ namespace Practice7UserList.Tools.DataStorage
 {
     internal class SerializedDataStorage : IDataStorage
     {
-        private readonly List<Person> _users;
+        // private readonly List<Person> _users;
+        private  List<Person> _users;
 
         internal SerializedDataStorage()
         {
@@ -36,6 +38,8 @@ namespace Practice7UserList.Tools.DataStorage
             SaveChanges();
 
         }
+
+    
         public List<Person> UsersList
         {
             get { return _users.ToList(); }

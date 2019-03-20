@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Practice7UserList.Annotations;
@@ -16,6 +16,9 @@ namespace Practice7UserList.ViewModels
     {
         private ObservableCollection<Person> _users;
         private Person _person;
+        private Thread _workingThread;
+        private CancellationToken _token;
+        private CancellationTokenSource _tokenSource;
         private ICommand _deletePersonCommand;
         private ICommand _addUserCommand;
 
@@ -31,11 +34,58 @@ namespace Practice7UserList.ViewModels
         public Person SelectedUser
         {
             get => _person;
-            set => _person = value;
+            set
+            {
+                _person = value; 
+                OnPropertyChanged();
+            }
         }
         internal UserListViewModel()
         {
             _users = new ObservableCollection<Person>(StationManager.DataStorage.UsersList);
+            _tokenSource = new CancellationTokenSource();
+            _token = _tokenSource.Token;
+            StartWorkingThread();
+            StationManager.StopThreads += StopWorkingThread;
+        }
+        private void StartWorkingThread()
+        {
+            _workingThread = new Thread(WorkingThreadProcess);
+            _workingThread.Start();
+        }
+
+        private void WorkingThreadProcess()
+        {
+            int i = 0;
+            while (!_token.IsCancellationRequested)
+            {
+                var users = _users.ToList();
+                Users = new ObservableCollection<Person>(StationManager.DataStorage.UsersList);
+                for (int j = 0; j < 3; j++)
+                {
+                    Thread.Sleep(500);
+                    if (_token.IsCancellationRequested)
+                        break;
+                }
+                if (_token.IsCancellationRequested)
+                    break;
+                for (int j = 0; j < 10; j++)
+                {
+                    Thread.Sleep(500);
+                    if (_token.IsCancellationRequested)
+                        break;
+                }
+                if (_token.IsCancellationRequested)
+                    break;
+                i++;
+            }
+        }
+        internal void StopWorkingThread()
+        {
+            _tokenSource.Cancel();
+            _workingThread.Join(2000);
+            _workingThread.Abort();
+            _workingThread = null;
         }
 
         public ICommand DeletePersonCommand
@@ -49,13 +99,9 @@ namespace Practice7UserList.ViewModels
         }
         private void AddUserImplementation(object obj)
         {
-
-            LoaderManager.Instance.ShowLoader();
             NavigationManager.Instance.Navigate(ViewType.AddUser);
-            Thread.Sleep(500);
-            LoaderManager.Instance.HideLoader();
-            UpdateData(obj);
         }
+       
 
         private bool CanExecuteCommand(object obj)
         {
@@ -67,10 +113,10 @@ namespace Practice7UserList.ViewModels
         {
             MessageBox.Show($"Person {SelectedUser.Name} was successfully deleted");
             StationManager.DataStorage.DeleteUser(_person);
-            UpdateData(obj);
+            UpdateData();
         }
 
-        private void UpdateData(object obj)
+        private void UpdateData()
         {
             _users = new ObservableCollection<Person>(StationManager.DataStorage.UsersList);
             OnPropertyChanged("Users");

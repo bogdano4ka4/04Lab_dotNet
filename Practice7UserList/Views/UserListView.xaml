@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500">
     <Grid>
@@ -17,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Users, Mode=OneWay}" SelectedItem ="{Binding SelectedUser}" AutoGenerateColumns="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Birthday"  IsReadOnly="True" Binding="{Binding BirthdayShort}"></DataGridTextColumn>

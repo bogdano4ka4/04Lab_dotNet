@@ -29,5 +29,3 @@ C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.pdb
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.g.cs
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.baml
-C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\UpdateView.baml
-C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\UpdateView.g.cs

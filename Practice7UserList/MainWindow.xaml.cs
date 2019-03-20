@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,7 @@ using Practice7UserList.ViewModels;
 
 namespace Practice7UserList
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    
     public partial class MainWindow : Window, IContentOwner
     {
         public ContentControl ContentControl
@@ -41,6 +40,11 @@ namespace Practice7UserList
             StationManager.Initialize(new SerializedDataStorage());
             NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
             NavigationManager.Instance.Navigate(ViewType.Main);
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            StationManager.CloseApp();
         }
     }
 }
