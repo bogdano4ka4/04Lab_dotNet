@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="Practice7UserList.Views.UserListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Users, Mode=OneWay}" SelectedItem ="{Binding SelectedUser}" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Birthday"  IsReadOnly="True" Binding="{Binding BirthdayShort}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Adult"  IsReadOnly="True" Binding="{Binding IsAdult}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Sun Sign"  IsReadOnly="True" Binding="{Binding SunSign}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Chinese Sign"  IsReadOnly="True" Binding="{Binding ChineseSign}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is Birthday"  IsReadOnly="True" Binding="{Binding IsBirthday}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StatusBar Height="30" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="0"
+                   VerticalAlignment="Bottom">
+            <Button  Command="{Binding DeletePersonCommand}">
+                <TextBlock Text="Delete User" FontWeight="Bold"></TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Center" Command="{Binding AddUserCommand}">
+                <TextBlock Text="Add person" FontWeight="Bold"></TextBlock>
+            </Button>
+
+        </StatusBar>
+
+    </Grid>
+</UserControl>
