@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
 
 namespace Practice7UserList
@@ -13,7 +7,7 @@ namespace Practice7UserList
     {
         public App()
         {
-            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
 
         void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

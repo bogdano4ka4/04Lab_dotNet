@@ -7,11 +7,11 @@ C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\bin\Debug\EntityFramework.xml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\bin\Debug\FontAwesome.WPF.xml
-C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.csprojAssemblyReference.cache
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\MainWindow.baml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\UserListView.baml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\MainWindow.g.cs
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Tools\Controls\LabelAndTextControl.g.cs
+C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.g.cs
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\MainView.g.cs
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\UserListView.g.cs
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\App.g.cs
@@ -19,6 +19,7 @@ C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList_MarkupCompile.cache
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList_MarkupCompile.lref
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Tools\Controls\LabelAndTextControl.baml
+C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.baml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\MainView.baml
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.g.resources
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.Properties.Resources.resources
@@ -27,5 +28,4 @@ C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.csproj.CopyComplete
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.exe
 C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.pdb
-C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.g.cs
-C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Views\CreateUserView.baml
+C:\Users\Богдана\Desktop\c# лаби\practices\Practice7UserList\Practice7UserList\obj\Debug\Practice7UserList.csprojAssemblyReference.cache

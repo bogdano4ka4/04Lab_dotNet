@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Practice7UserList.Models;
 using Practice7UserList.Tools;
-using Practice7UserList.Tools.Interfaces;
+using Practice7UserList.Tools.Exceptions;
 using Practice7UserList.Tools.Managers;
 using Practice7UserList.Tools.Navigation;
 
@@ -18,21 +14,22 @@ namespace Practice7UserList.ViewModels
     internal class CreateUserViewModel : BaseViewModel
     {
         #region Fields
+       
         private string _name;
         private string _surname;
         private string _email;
         private DateTime? _birth;
+        #endregion
 
         #region Commands
-        private ICommand _signUpCommand;
-        private ICommand _toSignInCommand;
-        #endregion
+        private ICommand _createCommand;
+        private ICommand _backCommand;
         #endregion
 
         #region Properties
         public string Name
         {
-            get { return _name; }
+            get => _name;
             set
             {
                 _name = value;
@@ -41,7 +38,7 @@ namespace Practice7UserList.ViewModels
         }
         public string Surname
         {
-            get { return _surname; }
+            get => _surname;
             set
             {
                 _surname = value;
@@ -50,7 +47,7 @@ namespace Practice7UserList.ViewModels
         }
         public string Email
         {
-            get { return _email; }
+            get => _email;
             set
             {
                 _email = value;
@@ -59,25 +56,23 @@ namespace Practice7UserList.ViewModels
         }
         public DateTime? Birth
         {
-            get { return _birth; }
+            get => _birth;
             set
             {
                 _birth = value;
                 OnPropertyChanged();
             }
         }
-
         #region Commands
 
         public ICommand CreatePersonCommand =>
-            _signUpCommand ?? (_signUpCommand =
-                new RelayCommand<object>(CreatePersonImplementation, CanSignUpExecute));
+            _createCommand ?? (_createCommand =
+                new RelayCommand<object>(CreatePersonImplementation, CanCreateExecute));
 
-        public ICommand BackCommand => _toSignInCommand ?? (_toSignInCommand = new RelayCommand<object>(BackImplementation));
-
+        public ICommand BackCommand => _backCommand ?? (_backCommand = new RelayCommand<object>(BackImplementation));
         #endregion
         #endregion
-        private bool CanSignUpExecute(object obj)
+        private bool CanCreateExecute(object obj)
         {
             return !String.IsNullOrEmpty(Name) &&
                    !String.IsNullOrEmpty(Surname) &&
@@ -85,7 +80,6 @@ namespace Practice7UserList.ViewModels
                    !String.IsNullOrEmpty(Birth.ToString());
 
         }
-
         private async void CreatePersonImplementation(object obj)
         {
             DateTime birth = (DateTime)Birth;
@@ -94,7 +88,6 @@ namespace Practice7UserList.ViewModels
             {
                 try
                 {
-
                     if (!new EmailAddressAttribute().IsValid(Email))
                     {
                         throw new IllegalEmailException(Email);
@@ -120,7 +113,8 @@ namespace Practice7UserList.ViewModels
                 {
                     var user = new Person(Name, Surname, _email, (DateTime)Birth);
                     StationManager.DataStorage.AddUser(user);
-                    StationManager.CurrentUser = user;
+                    //StationManager.CurrentUser = user;
+                    
                 }
                 catch (Exception ex)
                 {
@@ -132,10 +126,15 @@ namespace Practice7UserList.ViewModels
             });
             LoaderManager.Instance.HideLoader();
             if (result)
+            {
                 NavigationManager.Instance.Navigate(ViewType.Main);
+                StationManager.UpdateModel.UpdateData();
+            }
+            Name = "";
+            Surname = "";
+            Email = "";
+            Birth = null;
         }
-
-
         private bool GoodBirthday(DateTime birth)
         {
             DateTime today = DateTime.Today;
@@ -153,18 +152,11 @@ namespace Practice7UserList.ViewModels
             return true;
         }
 
-        private void IsBirthday()
-        {
-            DateTime birth = (DateTime)Birth;
-            if (birth.Day == DateTime.Today.Day
-                && birth.Month == DateTime.Today.Month)
-                MessageBox.Show("Happy Birthday!");
-        }
-
         private void BackImplementation(object obj)
         {
             NavigationManager.Instance.Navigate(ViewType.Main);
         }
-        
+
+       
     }
 }

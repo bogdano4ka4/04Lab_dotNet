@@ -4,17 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Users, Mode=OneWay}" SelectedItem ="{Binding SelectedUser}" AutoGenerateColumns="False" >
+        <StatusBar Grid.Row="0" Height="30" HorizontalAlignment="Stretch">
+            <Label HorizontalAlignment="Center"  VerticalAlignment="Center"  Content="Filter: "></Label>
+            <ComboBox SelectedIndex="{Binding Index}"  Height="30" VerticalAlignment="Top">
+                <TextBlock>Name</TextBlock>
+                <TextBlock>Surname</TextBlock>
+                <TextBlock>Email</TextBlock>
+                <TextBlock>Birthday</TextBlock>
+                <TextBlock>Is Adult</TextBlock>
+                <TextBlock>Sun Sign</TextBlock>
+                <TextBlock>Chinese Sign</TextBlock>
+                <TextBlock>Is Birthday</TextBlock>
+            </ComboBox>
+            <TextBox Width="300" Text="{Binding Filtering}"></TextBox>
+            <Button  Command="{Binding FilterCommand}">
+                <TextBlock Text="Filter" FontWeight="Bold"></TextBlock>
+            </Button>
+        </StatusBar>
+        <DataGrid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"  ItemsSource="{Binding Users, Mode=OneWay}" SelectedItem ="{Binding SelectedUser}" AutoGenerateColumns="False"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"  Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"></DataGridTextColumn>
@@ -26,13 +40,20 @@
                 <DataGridTextColumn Header="Is Birthday"  IsReadOnly="True" Binding="{Binding IsBirthday}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <StatusBar Height="30" HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Column="0"
+        <StatusBar Grid.Row="2" Height="30" HorizontalAlignment="Stretch"  Grid.Column="0"
                    VerticalAlignment="Bottom">
             <Button  Command="{Binding DeletePersonCommand}">
-                <TextBlock Text="Delete User" FontWeight="Bold"></TextBlock>
+                <TextBlock Text="Delete Person" FontWeight="Bold"></TextBlock>
             </Button>
             <Button HorizontalAlignment="Center" Command="{Binding AddUserCommand}">
                 <TextBlock Text="Add person" FontWeight="Bold"></TextBlock>
+            </Button>
+            
+            <Button HorizontalAlignment="Center" Command="{Binding SaveCommand}">
+                <TextBlock Text="Save changes" FontWeight="Bold"></TextBlock>
+            </Button>
+            <Button HorizontalAlignment="Center" Command="{Binding ShowAllCommand}">
+                <TextBlock Text="Show All " FontWeight="Bold"></TextBlock>
             </Button>
 
         </StatusBar>

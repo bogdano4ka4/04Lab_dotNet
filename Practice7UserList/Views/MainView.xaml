@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:views="clr-namespace:Practice7UserList.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="500">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
-        <views:UserListView Grid.Column="1" Grid.Row="0" />
+        <views:UserListView Grid.Row="0" />
     </Grid>
 </UserControl>
 

@@ -1,5 +1,5 @@
-﻿
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
+using Practice7UserList.Tools.Managers;
 using Practice7UserList.Tools.Navigation;
 using Practice7UserList.ViewModels;
 
@@ -10,7 +10,10 @@ namespace Practice7UserList.Views
         public UserListView()
         {
             InitializeComponent();
-            DataContext = new UserListViewModel();
+            StationManager.UpdateModel = new UserListViewModel();
+            DataContext = StationManager.UpdateModel;
+           
         }
+        
     }
 }

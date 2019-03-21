@@ -2,11 +2,9 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
-using System.Windows;
-using Practice7UserList.Tools;
 using Practice7UserList.Tools.Interfaces;
 
-namespace Practice7UserList
+namespace Practice7UserList.Models
 {
     [Serializable]
     internal class Person:INotifyPropertyChanged
@@ -15,15 +13,12 @@ namespace Practice7UserList
         private string _name;
         private string _surname;
         private string _email;
-        private DateTime? _birth;
-
+        private DateTime _birth;
         private readonly bool _isBirthday;
         private readonly string _westHor;
         private readonly string _chiHor;
         private readonly bool _isAdult;
         #endregion
-
-
 
         #region Properties
         public string Name
@@ -31,7 +26,8 @@ namespace Practice7UserList
             get => _name;
             set
             {
-                _name = value;
+                if(!String.IsNullOrEmpty((string)value))
+                    _name = value;
                 OnPropertyChanged();
             }
 
@@ -41,7 +37,8 @@ namespace Practice7UserList
             get => _surname;
             set
             {
-                _surname = value;
+                if (!String.IsNullOrEmpty((string)value))
+                    _surname = value;
                 OnPropertyChanged();
             }
         }
@@ -50,17 +47,12 @@ namespace Practice7UserList
             get => _email;
             set
             {
-                if (!new EmailAddressAttribute().IsValid(value))
-                {
-                   throw new IllegalEmailException(value);
-                    return;
-                }
-                _email = value;
-
+                if (new EmailAddressAttribute().IsValid(value))
+                    _email = value;
                 OnPropertyChanged();
             }
         }
-        public DateTime? Birth
+        public DateTime Birth
         {
             get => _birth;
             set
@@ -74,9 +66,10 @@ namespace Practice7UserList
                 OnPropertyChanged("BirthdayShort");
             }
         }
+        
         public string BirthdayShort
         {
-            get { return _birth?.ToShortDateString(); }
+            get { return _birth.ToShortDateString(); }
         }
         public bool IsBirthday
         {
@@ -117,15 +110,9 @@ namespace Practice7UserList
             _name = name;
             _surname = surname;
             _email = email;
-            if(Birth!=null)
-            _isBirthday = CheckBirthday();
-            _westHor = WestHor();
-            _chiHor = GiveChinaHoroscope(Birth);
-            _isAdult = CalculateAge() >= 18;
         }
         public Person(string name, string surname, DateTime birth)
         {
-            
             _name = name;
             _surname = surname;
             _birth = birth;
@@ -141,44 +128,45 @@ namespace Practice7UserList
         {
             DateTime today = Convert.ToDateTime(DateTime.Today);
             int? year = 0;
-            if (Birth?.Month > today.Month || (today.Month == Birth?.Month && today.Day < Birth?.Day))
-                year = today.Year - Birth?.Year - 1;
-            else year = today.Year - Birth?.Year;
+            if (Birth.Month > today.Month || (today.Month == Birth.Month && today.Day < Birth.Day))
+                year = today.Year - Birth.Year - 1;
+            else year = today.Year - Birth.Year;
             return year;
         }
         //method that return West Horoscope
         private string WestHor()
         {
-            if ((Birth?.Month == 3 && Birth?.Day >= 21) || (Birth?.Month == 4 && Birth?.Day <= 20))
+            if ((Birth.Month == 3 && Birth.Day >= 21) || (Birth.Month == 4 && Birth.Day <= 20))
                 return "Aries";
-            if ((Birth?.Month == 4 && Birth?.Day >= 21) || (Birth?.Month == 5 && Birth?.Day <= 21))
+            if ((Birth.Month == 4 && Birth.Day >= 21) || (Birth.Month == 5 && Birth.Day <= 21))
                 return "Taurus";
-            if ((Birth?.Month == 5 && Birth?.Day >= 22) || (Birth?.Month == 6 && Birth?.Day <= 21))
+            if ((Birth.Month == 5 && Birth.Day >= 22) || (Birth.Month == 6 && Birth.Day <= 21))
                 return "Gemini";
-            if ((Birth?.Month == 6 && Birth?.Day >= 22) || (Birth?.Month == 7 && Birth?.Day <= 22))
+            if ((Birth.Month == 6 && Birth.Day >= 22) || (Birth.Month == 7 && Birth.Day <= 22))
                 return "Cancer";
-            if ((Birth?.Month == 7 && Birth?.Day >= 23) || (Birth?.Month == 8 && Birth?.Day <= 21))
+            if ((Birth.Month == 7 && Birth.Day >= 23) || (Birth.Month == 8 && Birth.Day <= 21))
                 return "Leo";
-            if ((Birth?.Month == 8 && Birth?.Day >= 22) || (Birth?.Month == 9 && Birth?.Day <= 23))
+            if ((Birth.Month == 8 && Birth.Day >= 22) || (Birth.Month == 9 && Birth.Day <= 23))
                 return "Virgo";
-            if ((Birth?.Month == 9 && Birth?.Day >= 24) || (Birth?.Month == 10 && Birth?.Day <= 23))
+            if ((Birth.Month == 9 && Birth.Day >= 24) || (Birth.Month == 10 && Birth.Day <= 23))
                 return "Libra";
-            if ((Birth?.Month == 10 && Birth?.Day >= 24) || (Birth?.Month == 11 && Birth?.Day <= 22))
+            if ((Birth.Month == 10 && Birth.Day >= 24) || (Birth.Month == 11 && Birth.Day <= 22))
                 return "Scorpio";
-            if ((Birth?.Month == 11 && Birth?.Day >= 23) || (Birth?.Month == 12 && Birth?.Day <= 22))
+            if ((Birth.Month == 11 && Birth.Day >= 23) || (Birth.Month == 12 && Birth.Day <= 22))
                 return "Sagittarius";
-            if ((Birth?.Month == 12 && Birth?.Day >= 24) || (Birth?.Month == 1 && Birth?.Day <= 23))
+            if ((Birth.Month == 12 && Birth.Day >= 24) || (Birth.Month == 1 && Birth.Day <= 23))
                 return "Capricorn";
-            if ((Birth?.Month == 1 && Birth?.Day >= 21) || (Birth?.Month == 2 && Birth?.Day <= 19))
+            if ((Birth.Month == 1 && Birth.Day >= 21) || (Birth.Month == 2 && Birth.Day <= 19))
                 return "Aquarius";
-            if ((Birth?.Month == 2 && Birth?.Day >= 20) || (Birth?.Month == 3 && Birth?.Day <= 20))
+            if ((Birth.Month == 2 && Birth.Day >= 20) || (Birth.Month == 3 && Birth.Day <= 20))
                 return "Pisces";
             return "sign";
         }
+       
         private bool CheckBirthday()
         {
             DateTime today = Convert.ToDateTime(DateTime.Today);
-            if (today.Month == Birth?.Month && today.Day == Birth?.Day)
+            if (today.Month == Birth.Month && today.Day == Birth.Day)
                 return true;
             return false;
         }
@@ -196,8 +184,7 @@ namespace Practice7UserList
         #endregion
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
-
-       
+        
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Windows;
 using Practice7UserList.Tools.DataStorage;
+using Practice7UserList.ViewModels;
 
 namespace Practice7UserList.Tools.Managers
 {
     internal static class StationManager
     {
-        public static event Action StopThreads;
         private static IDataStorage _dataStorage;
-
-        internal static Person CurrentUser { get; set; }
+        internal static UserListViewModel UpdateModel { get; set; }
 
         internal static IDataStorage DataStorage
         {
@@ -20,11 +18,9 @@ namespace Practice7UserList.Tools.Managers
         {
             _dataStorage = dataStorage;
         }
-
+        
         internal static void CloseApp()
         {
-            MessageBox.Show("ShutDown");
-            StopThreads?.Invoke();
             Environment.Exit(1);
         }
     }

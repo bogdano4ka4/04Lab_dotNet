@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Practice7UserList.Tools.Navigation;
 
 namespace Practice7UserList.Views
@@ -10,6 +8,9 @@ namespace Practice7UserList.Views
         public MainView()
         {
             InitializeComponent();
+          
         }
+
+      
     }
 }

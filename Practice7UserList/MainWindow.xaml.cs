@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Practice7UserList.Tools.DataStorage;
 using Practice7UserList.Tools.Managers;
 using Practice7UserList.Tools.Navigation;
@@ -44,6 +32,7 @@ namespace Practice7UserList
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
+            ((SerializedDataStorage)StationManager.DataStorage).SaveChanges();
             StationManager.CloseApp();
         }
     }

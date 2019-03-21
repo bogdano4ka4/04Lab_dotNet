@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Practice7UserList.Tools.Navigation;
+﻿using Practice7UserList.Tools.Navigation;
 
 namespace Practice7UserList.Tools.Managers
 {

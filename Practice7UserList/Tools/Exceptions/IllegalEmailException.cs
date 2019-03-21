@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Practice7UserList.Tools
+namespace Practice7UserList.Tools.Exceptions
 {
     public class IllegalEmailException : Exception
     {

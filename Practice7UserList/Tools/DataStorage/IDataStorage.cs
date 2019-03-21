@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Practice7UserList.Models;
 
 namespace Practice7UserList.Tools.DataStorage
 {
@@ -10,7 +7,6 @@ namespace Practice7UserList.Tools.DataStorage
     {
         void AddUser(Person user);
         void DeleteUser(Person user);
-
         List<Person> UsersList { get; }
     }
 }

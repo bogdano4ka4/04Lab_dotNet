@@ -1,6 +1,6 @@
 ﻿using System;
 using Practice7UserList.Views;
-using SignUpView = Practice7UserList.Views.Authentication.SignUpView;
+using Practice7UserList.Views.Authentication;
 
 namespace Practice7UserList.Tools.Navigation
 {
@@ -15,11 +15,11 @@ namespace Practice7UserList.Tools.Navigation
         {
             switch (viewType)
             {
-                case ViewType.AddUser:
-                    ViewsDictionary.Add(viewType, new SignUpView());
-                    break;
                 case ViewType.Main:
                     ViewsDictionary.Add(viewType, new MainView());
+                    break;
+                case ViewType.AddUser:
+                    ViewsDictionary.Add(viewType, new AddPersonView());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(viewType), viewType, null);
