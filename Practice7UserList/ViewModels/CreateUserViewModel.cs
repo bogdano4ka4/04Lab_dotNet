@@ -129,11 +129,12 @@ namespace Practice7UserList.ViewModels
             {
                 NavigationManager.Instance.Navigate(ViewType.Main);
                 StationManager.UpdateModel.UpdateData();
+                Name = "";
+                Surname = "";
+                Email = "";
+                Birth = null;
             }
-            Name = "";
-            Surname = "";
-            Email = "";
-            Birth = null;
+           
         }
         private bool GoodBirthday(DateTime birth)
         {

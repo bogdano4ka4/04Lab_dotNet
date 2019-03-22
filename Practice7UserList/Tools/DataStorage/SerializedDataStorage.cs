@@ -54,7 +54,7 @@ namespace Practice7UserList.Tools.DataStorage
             AddUser(new Person("Alexander", "Pavlik", "Pavlik@gmail.com", new DateTime(1945, 3, 12)));
             AddUser(new Person("Mona", "Rubin", "Rubin@gmail.com", new DateTime(1945, 4, 1)));
             AddUser(new Person("Mara", "Bodnar", "Bodnar@gmail.com", new DateTime(2001, 5, 2)));
-            AddUser(new Person("Swish", "Ager", "Ager@gmail.com", new DateTime(199, 6, 3)));
+            AddUser(new Person("Swish", "Ager", "Ager@gmail.com", new DateTime(1999, 6, 3)));
             AddUser(new Person("Cooper", "Monir", "Monir1@gmail.com", new DateTime(1916, 7, 4)));
             AddUser(new Person("Lola", "Forex", "Forex@gmail.com", new DateTime(2018, 9, 5)));
             AddUser(new Person("Lolita", "Forew", "Forew@gmail.com", new DateTime(1921, 6, 6)));

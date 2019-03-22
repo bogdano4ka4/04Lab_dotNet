@@ -93,7 +93,6 @@ namespace Practice7UserList.Models
         #endregion
 
         #region Constructor
-
         public Person(string name, string surname, string email, DateTime birth)
         {
             _name = name;

@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
         <StatusBar Grid.Row="0" Height="30" HorizontalAlignment="Stretch">
             <Label HorizontalAlignment="Center"  VerticalAlignment="Center"  Content="Filter: "></Label>
-            <ComboBox SelectedIndex="{Binding Index}"  Height="30" VerticalAlignment="Top">
+            <ComboBox SelectedIndex="{Binding FilterIndex,  UpdateSourceTrigger=PropertyChanged}"  Height="30" VerticalAlignment="Top">
                 <TextBlock>Name</TextBlock>
                 <TextBlock>Surname</TextBlock>
                 <TextBlock>Email</TextBlock>
@@ -23,10 +23,24 @@
                 <TextBlock>Chinese Sign</TextBlock>
                 <TextBlock>Is Birthday</TextBlock>
             </ComboBox>
-            <TextBox Width="300" Text="{Binding Filtering}"></TextBox>
-            <Button  Command="{Binding FilterCommand}">
+            <TextBox Width="250" Text="{Binding Filtering,  UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Button  Command="{Binding FilterCommand,  UpdateSourceTrigger=PropertyChanged}">
                 <TextBlock Text="Filter" FontWeight="Bold"></TextBlock>
             </Button>
+            <ComboBox SelectedIndex="{Binding SortIndex,  UpdateSourceTrigger=PropertyChanged}"  Height="30" VerticalAlignment="Top">
+                <TextBlock>Name</TextBlock>
+                <TextBlock>Surname</TextBlock>
+                <TextBlock>Email</TextBlock>
+                <TextBlock>Birthday</TextBlock>
+                <TextBlock>Is Adult</TextBlock>
+                <TextBlock>Sun Sign</TextBlock>
+                <TextBlock>Chinese Sign</TextBlock>
+                <TextBlock>Is Birthday</TextBlock>
+            </ComboBox>
+            <Button  Command="{Binding SortCommand,  UpdateSourceTrigger=PropertyChanged}">
+                <TextBlock Text="Sort" FontWeight="Bold"></TextBlock>
+            </Button>
+            
         </StatusBar>
         <DataGrid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"  ItemsSource="{Binding Users, Mode=OneWay}" SelectedItem ="{Binding SelectedUser}" AutoGenerateColumns="False"  >
             <DataGrid.Columns>
@@ -55,7 +69,6 @@
             <Button HorizontalAlignment="Center" Command="{Binding ShowAllCommand}">
                 <TextBlock Text="Show All " FontWeight="Bold"></TextBlock>
             </Button>
-
         </StatusBar>
 
     </Grid>
