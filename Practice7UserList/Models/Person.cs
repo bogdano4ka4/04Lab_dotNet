@@ -26,7 +26,7 @@ namespace Practice7UserList.Models
             get => _name;
             set
             {
-                if(!String.IsNullOrEmpty((string)value))
+               // if(!String.IsNullOrEmpty((string)value))
                     _name = value;
                 OnPropertyChanged();
             }
@@ -37,7 +37,7 @@ namespace Practice7UserList.Models
             get => _surname;
             set
             {
-                if (!String.IsNullOrEmpty((string)value))
+                //if (!String.IsNullOrEmpty((string)value))
                     _surname = value;
                 OnPropertyChanged();
             }
