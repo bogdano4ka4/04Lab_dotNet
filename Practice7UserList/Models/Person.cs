@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
+using System.Windows;
 using Practice7UserList.Tools.Interfaces;
 
 namespace Practice7UserList.Models
@@ -47,8 +48,11 @@ namespace Practice7UserList.Models
             get => _email;
             set
             {
-                if (new EmailAddressAttribute().IsValid(value))
-                    _email = value;
+                if (!new EmailAddressAttribute().IsValid(value))
+                    MessageBox.Show("Input valid email!");
+                else
+                     _email = value;
+                
                 OnPropertyChanged();
             }
         }
